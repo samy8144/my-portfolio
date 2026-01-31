@@ -1,223 +1,127 @@
-# Samata's Portfolio
+# Samata's Portfolio & Authentication System
 
+A robust, full-stack web application featuring secure user authentication and a professional, dynamic portfolio page. This project demonstrates proficiency in modern web development, security best practices, and UI/UX design.
 
-A responsive full-stack web application with user authentication, MongoDB integration, and portfolio display.
+![Project Status](https://img.shields.io/badge/Status-Completed-success)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
-## 🌟 Features
+## 🌟 Project Overview
 
-- **User Registration** - Create new accounts with email and password
-- **User Login** - Secure authentication with JWT tokens
-- **Portfolio Page** - Display user profile and portfolio content
-- **Responsive Design** - Works seamlessly on desktop and mobile devices
-- **Modern UI** - Dark mode with gradient accents and smooth animations
-- **Secure** - Password hashing with bcrypt and JWT-based authentication
+This application serves two main purposes:
+1.  **Authentication System**: A secure portal allowing users to register and log in to access protected content.
+2.  **Professional Portfolio**: A dynamic showcase of my skills, projects (specifically AI/ML), and certifications, accessible only to authenticated users.
+
+The design features a custom **Dark Grey Theme** (deep grey gradients and cards) for a modern, professional, and comfortable viewing experience.
+
+## ✨ Key Features
+
+### 🔐 Authentication & Security
+*   **User Registration**: Secure sign-up flow with email validation and password restrictions.
+*   **Secure Login**: JWT (JSON Web Token) based authentication with session management.
+*   **Password Hashing**: Industry-standard `bcryptjs` encryption for password storage.
+*   **Protected Routes**: The portfolio page is inaccessible without a valid login token.
+*   **Automatic Logout**: Session handling with an optimized logout flow.
+
+### 🎨 User Interface & Experience
+*   **Dark Grey Aesthetic**: A custom-tailored theme using "Night Sky" gradients and deep charcoal cards for a premium look (solved "too much white" issues).
+*   **Personalized Welcome**: Dynamic greeting ("Welcome, [User]") upon login.
+*   **Responsive Design**: Fully optimized for Desktops, Tablets, and Mobile devices.
+*   **Glassmorphism**: Subtle glass-effect cards for a modern UI feel.
+
+### 📄 Portfolio Content
+*   **About Me**: Personalized professional summary.
+*   **AI & ML Projects**: Detailed showcase of projects like "AI-Powered Document Extractor" and "Deep Learning Image Detection".
+*   **Skills Matrix**: Categorized technical skills (Languages, Web, DB, QA, Tools).
+*   **Certifications**: A dedicated section for professional certificates.
+*   **Contact Links**: Professional formatting for LinkedIn and GitHub.
 
 ## 🛠️ Technology Stack
 
-### Frontend
-- HTML5
-- CSS3 (Modern responsive design with animations)
-- Vanilla JavaScript (ES6+)
-- Google Fonts (Inter)
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Frontend** | HTML5, CSS3 | Semantic markup and custom "Inter" typography. |
+| **Logic** | JavaScript (ES6+) | Vanilla JS for DOM manipulation and API calls. |
+| **Backend** | Node.js & Express | Robust server-side logic and API routing. |
+| **Database** | MongoDB | NoSQL database for flexible user data storage. |
+| **Auth** | JWT & Bcrypt | Stateless authentication and security. |
+| **Deployment** | Vercel | Serverless deployment platform. |
 
-### Backend
-- Node.js
-- Express.js (Serverless functions)
-- MongoDB with Mongoose
-- bcryptjs (Password hashing)
-- jsonwebtoken (JWT authentication)
+## 🚀 Installation & Local Setup
 
-### Deployment
-- Vercel (Serverless deployment)
-- MongoDB Atlas (Cloud database)
+Follow these steps to run the project locally on your machine.
 
-## 📋 Prerequisites
+### Prerequisites
+*   Node.js (v14 or higher)
+*   Git
 
-- Node.js (v14 or higher)
-- MongoDB Atlas account (free tier)
-- Vercel account (for deployment)
-- Git
+### Steps
 
-## 🚀 Local Setup
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/samy8144/my-portfolio.git
+    cd my-portfolio
+    ```
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd Twenty20
-   ```
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+3.  **Environment Setup**
+    Create a `.env` file in the root directory (optional for local memory DB, required for cloud):
+    ```env
+    # Optional: Connect to Cloud DB
+    MONDODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/dbname
+    JWT_SECRET=your_super_secret_key_here
+    ```
+    *Note: If no MongoDB URI is provided, the app uses an in-memory database for testing.*
 
-3. **Set up environment variables**
-   
-   Create a `.env` file in the root directory:
-   ```
-   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/twenty20?retryWrites=true&w=majority
-   JWT_SECRET=your-secret-key-change-this-in-production
-   ```
+4.  **Run the Server**
+    ```bash
+    npm run dev
+    ```
 
-4. **Install Vercel CLI**
-   ```bash
-   npm install -g vercel
-   ```
+5.  **Access the App**
+    Open your browser and navigate to: `http://localhost:3001`
 
-5. **Run locally**
-   ```bash
-   vercel dev
-   ```
+## ☁️ Deployment
 
-6. **Open in browser**
-   ```
-   http://localhost:3000
-   ```
+This project is optimized for deployment on **Vercel**.
 
-## 📦 Deployment to Vercel
+1.  Push your code to **GitHub**.
+2.  Import the repository in **Vercel**.
+3.  Add your `MONGODB_URI` and `JWT_SECRET` in the Vercel Project Settings > Environment Variables.
+4.  Deploy!
 
-1. **Login to Vercel**
-   ```bash
-   vercel login
-   ```
+*For a step-by-step guide, please refer to* `DEPLOY.md`.
 
-2. **Deploy**
-   ```bash
-   vercel
-   ```
-
-3. **Add environment variables in Vercel**
-   - Go to your project settings on Vercel dashboard
-   - Add `MONGODB_URI` and `JWT_SECRET` in Environment Variables
-
-4. **Deploy to production**
-   ```bash
-   vercel --prod
-   ```
-
-## 🗄️ MongoDB Atlas Setup
-
-1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a new cluster (free tier M0)
-3. Create a database user with read/write permissions
-4. Whitelist all IP addresses (0.0.0.0/0) for Vercel deployment
-5. Get your connection string and add it to `.env` and Vercel environment variables
-
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```
 Twenty20/
-├── api/
-│   ├── login.js          # Login endpoint
-│   ├── register.js       # Registration endpoint
-│   └── verify.js         # Token verification endpoint
-├── lib/
-│   └── db.js            # MongoDB connection and User model
-├── public/
-│   ├── index.html       # Landing page with login/register
-│   ├── portfolio.html   # Portfolio page
-│   ├── styles.css       # Styles for all pages
-│   ├── app.js          # Landing page JavaScript
-│   └── portfolio.js    # Portfolio page JavaScript
-├── .env.example        # Environment variables template
-├── .gitignore         # Git ignore file
-├── package.json       # Dependencies and scripts
-├── vercel.json       # Vercel configuration
-└── README.md         # This file
+├── api/                # Serverless API functions (Vercel compatible)
+│   ├── login.js        # Auth: Login logic
+│   ├── register.js     # Auth: Registration logic
+│   └── verify.js       # Auth: Token verification
+├── public/             # Static Frontend Files
+│   ├── index.html      # Landing/Login Page
+│   ├── portfolio.html  # Main Portfolio Interface
+│   ├── style.css       # Global Styles (Dark Theme)
+│   ├── app.js          # Login/Register Logic
+│   └── portfolio.js    # Portfolio Logic & Data
+├── lib/                # Shared Utilities
+│   └── db.js           # Database Connection
+├── server.js           # Local Development Server
+└── package.json        # Project Manifest
 ```
-
-## 🧪 Testing the Application
-
-### Registration Flow
-1. Open the deployed URL
-2. Click on the "Register" tab
-3. Enter name (optional), email, and password (min 6 characters)
-4. Click "Register"
-5. Verify success message is displayed
-6. Check MongoDB Atlas to confirm user was created
-
-### Login Flow
-1. Click on the "Login" tab
-2. Enter registered email and password
-3. Click "Login"
-4. Verify redirect to portfolio page
-5. Confirm user name and email are displayed
-
-### Portfolio Page
-1. After successful login, view portfolio sections:
-   - About Me
-   - Skills
-   - Projects
-2. Verify all content is displayed correctly
-3. Test on different screen sizes (mobile/tablet/desktop)
-
-### Logout Flow
-1. Click the "Logout" button
-2. Verify redirect to landing page
-3. Confirm session is cleared (can't access portfolio without login)
-
-## 🔒 Security Features
-
-- Passwords hashed with bcrypt (salt rounds: 10)
-- JWT tokens for secure authentication
-- Token expiration (7 days)
-- Protected routes (portfolio page requires authentication)
-- Email validation
-- Password minimum length requirement (6 characters)
-- CORS enabled for API endpoints
-
-## 📱 Responsive Design
-
-The application is fully responsive and tested on:
-- Desktop (1920x1080 and above)
-- Tablet (768px - 1024px)
-- Mobile (320px - 767px)
-
-## 🎨 Design Features
-
-- Modern dark mode theme
-- Gradient accents and glassmorphism effects
-- Smooth micro-animations
-- Hover effects on interactive elements
-- Premium color palette
-- Custom Google Fonts (Inter)
-
-## 📝 Customization
-
-To customize the portfolio content:
-1. Edit `public/portfolio.html`
-2. Update the About Me section with your information
-3. Modify the Skills grid with your skills
-4. Replace project items with your actual projects
-
-## 🐛 Troubleshooting
-
-**Issue: Can't connect to MongoDB**
-- Verify MongoDB URI in environment variables
-- Check network access settings in MongoDB Atlas
-- Ensure database user credentials are correct
-
-**Issue: Login/Registration not working**
-- Check browser console for errors
-- Verify API endpoints are accessible
-- Confirm environment variables are set in Vercel
-
-**Issue: Portfolio page not loading**
-- Clear browser localStorage
-- Check if token is being stored correctly
-- Verify authentication endpoint is working
-
-## 📄 License
-
-This project is created as part of the Twenty20 Systems hiring assessment.
 
 ## 👤 Author
 
-[Your Name]
-- Email: [Your Email]
-- GitHub: [Your GitHub Profile]
+**Samata Sandeep Padanad**
+*   **Role**: Information Science and Engineering Student
+*   **Focus**: Software Engineering, AI/ML, Data Structures
+*   **Location**: Bengaluru
+*   **GitHub**: [samy8144](http://github.com/samy8144)
 
-## 🔗 Links
-
-- **Live Demo**: [Your Vercel URL]
-- **GitHub Repository**: [Your GitHub Repo URL]
+---
+*Created as part of the Twenty20 Systems Hiring Assessment.*

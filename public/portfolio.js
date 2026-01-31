@@ -6,13 +6,17 @@ function checkAuth() {
     // ... (rest of checkAuth remains)
 }
 
-// Display user information - Disabled to keep static portfolio info
+// Display user information
 function displayUserInfo(user) {
-    // const userName = document.getElementById('userName');
-    // const userEmail = document.getElementById('userEmail');
+    // Static profile info (Samata) remains unchanged
+    // Dynamic welcome message for logged-in user
+    const welcomeMsg = document.getElementById('welcomeMsg');
+    const name = user.name || user.email.split('@')[0];
+    // Capitalize first letter
+    const displayName = name.charAt(0).toUpperCase() + name.slice(1);
 
-    // userName.textContent = user.name || user.email.split('@')[0];
-    // userEmail.textContent = user.email;
+    welcomeMsg.textContent = `Welcome, ${displayName}`;
+
     console.log('User logged in:', user.email);
 }
 
